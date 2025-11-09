@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costa Rica: Pura Vida - Presentación Académica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .page-content {
+            min-height: calc(100vh - 80px);
+        }
+        .interactive-btn {
+            background-color: #0d9488;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .interactive-btn:hover {
+            background-color: #0f766e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Barra de navegación -->
+    <nav class="bg-teal-700 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" onclick="loadPage('home')" class="text-white text-2xl font-extrabold tracking-wider">
+                    <span class="hidden sm:inline">Costa Rica:</span> Pura Vida
+                </a>
+                <div class="flex space-x-4">
+                    <button onclick="loadPage('home')" class="nav-link text-white hover:text-teal-200 p-2 rounded-lg">Inicio</button>
+                    <button onclick="loadPage('desarrollo')" class="nav-link text-white hover:text-teal-200 p-2 rounded-lg">Desarrollo</button>
+                    <button onclick="loadPage('recursos')" class="nav-link text-white hover:text-teal-200 p-2 rounded-lg">Recursos</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <main id="content-container" class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 page-content"></main>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-800 text-white p-6 mt-10 text-center">
+        <p>&copy; 2024 Proyecto Académico sobre Costa Rica | Desarrollado con HTML, CSS y JavaScript</p>
+    </footer>
+
+    <script>
+        const contentContainer = document.getElementById('content-container');
+
+        const pages = {
+            'home': `
+                <section class="space-y-12">
+                    <header class="text-center pt-8 pb-12 bg-white rounded-xl shadow-lg">
+                        <h1 class="text-5xl md:text-6xl font-black text-teal-800 mb-4">Pura Vida: Un Viaje a Costa Rica</h1>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Descubre el corazón verde de América Central, una tierra de biodiversidad, paz y gente acogedora.</p>
+                    </header>
+
+                    <!-- Introducción general -->
+                    <div class="grid md:grid-cols-2 gap-10 items-center bg-white p-6 rounded-xl shadow-lg">
+                        <div>
+                            <h2 class="text-3xl font-bold text-teal-700 mb-4">Biodiversidad y Paz</h2>
+                            <p class="mb-4 text-lg">
+                                Costa Rica alberga el 5% de la biodiversidad mundial y es un ejemplo global de sostenibilidad. Desde 1948, el país no tiene ejército, destinando sus recursos a educación y medio ambiente.
+                            </p>
+                            <p class="italic text-gray-500">
+                                “Pura Vida” representa su filosofía nacional: optimismo, paz y gratitud.
+                            </p>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Costa_Rica_map_es.png" 
+                             alt="Mapa de Costa Rica" 
+                             class="w-full h-auto rounded-xl shadow-2xl"/>
+                    </div>
+
+                    <!-- Gastronomía -->
+                    <div class="bg-amber-50 p-8 rounded-xl shadow-lg border-l-8 border-amber-500">
+                        <h2 class="text-3xl font-bold text-amber-700 mb-4">El Sabor del Pura Vida</h2>
+                        <div class="flex flex-col md:flex-row gap-6 items-center">
+                            <div class="flex-1">
+                                <h3 class="text-2xl font-semibold mb-3">El Gallo Pinto</h3>
+                                <p>El plato nacional: mezcla de arroz y frijoles cocidos con especias, especialmente la Salsa Lizano. Es un símbolo de la vida sencilla costarricense.</p>
+                                <button id="gastronomy-btn" onclick="showFunFact()" class="interactive-btn text-white font-bold py-3 px-6 rounded-full mt-4">¿Cuál es el secreto de la Salsa Lizano?</button>
+                                <p id="fun-fact-reveal" class="hidden mt-4 bg-green-100 p-3 rounded-lg">🌿 <strong>El secreto:</strong> mezcla de vegetales, vinagre y especias, que da un sabor dulce y único.</p>
+                            </div>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Gallo_pinto.jpg" 
+                                 alt="Plato típico Gallo Pinto" 
+                                 class="w-full md:w-1/3 object-cover rounded-lg shadow-xl"/>
+                        </div>
+                    </div>
+
+                    <!-- Video oficial -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-teal-700 mb-4">Naturaleza Viva: Costa Rica</h2>
+                        <iframe width="100%" height="450" 
+                            src="https://www.youtube.com/embed/OJqTbcWNU7o" 
+                            title="Visit Costa Rica - Pura Vida Experience" 
+                            allowfullscreen 
+                            class="rounded-xl shadow-xl"></iframe>
+                    </div>
+                </section>
+            `,
+
+            'desarrollo': `
+                <section class="space-y-12">
+                    <h1 class="text-4xl font-bold text-teal-800 text-center">Desarrollo Temático</h1>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-teal-700 mb-4">Características Culturales</h2>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div>
+                                <h3 class="text-xl font-semibold text-amber-600 mb-2">Gastronomía</h3>
+                                <p>El “Casado” es el almuerzo tradicional: arroz, frijoles, carne y plátano maduro. También destaca el café costarricense, de los más finos del mundo.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-amber-600 mb-2">Música</h3>
+                                <p>El “Punto Guanacasteco” es la danza nacional; los ritmos caribeños y folclóricos representan la mezcla cultural del país.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-amber-600 mb-2">Vestimenta</h3>
+                                <p>La vestimenta tradicional usa colores vivos y representa la alegría tica: faldas largas, blusas blancas y pañuelos rojos.</p>
+                            </div>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Punto_Guanacasteco.jpg" 
+                             alt="Baile tradicional Punto Guanacasteco" 
+                             class="mt-6 w-full rounded-xl shadow-lg"/>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-teal-700 mb-4">Aspectos Históricos</h2>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>🇨🇷 <strong>Independencia (1821):</strong> lograda pacíficamente.</li>
+                            <li>🕊️ <strong>Abolición del ejército (1948):</strong> decisión histórica del presidente José Figueres Ferrer.</li>
+                            <li>📚 <strong>Educación y democracia:</strong> pilares del desarrollo moderno costarricense.</li>
+                        </ul>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Jose_Figueres_Ferrer.jpg" 
+                             alt="José Figueres Ferrer, presidente que abolió el ejército" 
+                             class="mt-6 w-full rounded-xl shadow-lg"/>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-teal-700 mb-4">Datos Geográficos</h2>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>🌋 Volcanes activos: Arenal, Poás y Turrialba.</li>
+                            <li>🏝️ Dos costas: Pacífico y Caribe.</li>
+                            <li>🌳 25% del territorio protegido como parque nacional.</li>
+                        </ul>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Arenal_Volcano.jpg" 
+                             alt="Volcán Arenal" 
+                             class="mt-6 w-full rounded-xl shadow-lg"/>
+                    </div>
+                </section>
+            `,
+
+            'recursos': `
+                <section class="space-y-8 bg-white p-8 rounded-xl shadow-lg">
+                    <h1 class="text-4xl font-bold text-teal-800 text-center">Recursos y Datos</h1>
+                    <ul class="space-y-3 text-lg">
+                        <li><strong>Libro:</strong> Sánchez, M. (2022). <em>Pura Vida: La historia de un país sin ejército.</em></li>
+                        <li><strong>Artículo:</strong> Rodríguez, C. (2023). "Ecoturismo en Costa Rica". <em>Revista Ambiental</em>.</li>
+                        <li><strong>Sitio Web:</strong> <a href="https://www.visitcostarica.com/es" target="_blank" class="text-blue-600 underline">Visit Costa Rica (Oficial)</a></li>
+                    </ul>
+                    <h2 class="text-2xl font-bold text-teal-700 mt-6">Datos Curiosos</h2>
+                    <p>🌱 98% de su energía proviene de fuentes renovables.</p>
+                    <p>🕊️ La frase “Pura Vida” representa su estilo de vida optimista y pacífico.</p>
+                </section>
+            `
+        };
+
+        function loadPage(id){ contentContainer.innerHTML = pages[id]; }
+        function showFunFact(){
+            const fact=document.getElementById('fun-fact-reveal');
+            fact.classList.toggle('hidden');
+        }
+        window.onload = () => loadPage('home');
+    </script>
+</body>
+</html>
